@@ -1,5 +1,6 @@
-Sumo - some protein parsers for cleave offset detection from mass spec output Ac200
+Sumo 
 ====
+some protein parsers for cleave offset detection from mass spec output Ac200
 
 
 
