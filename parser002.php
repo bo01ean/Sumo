@@ -5,7 +5,7 @@
 
 
 
-class claudio {
+class Parser002 {
 
 	public $dataStore = array();
 
@@ -157,7 +157,7 @@ class claudio {
 }
 
 
-$clajda = new claudio();
+$clajda = new Parser002();
 
 
 
