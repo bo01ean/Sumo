@@ -42,14 +42,11 @@ function process($in,$out)
 
 	$inc = 0;
 
-
 	while (($data = fgetcsv($fp, 1000, "\t")) !== FALSE) {
 
 		$inc++;
 
 		list($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k) = $data;
-
-
 
 		if(array_key_exists($e, $tally)){
 			print "hhhhiiii {$e}";
@@ -58,26 +55,11 @@ function process($in,$out)
 
 		$tally[$e] = 1;
 
-		if(preg_match("!{$patternOne}!", $e)){
+		if(preg_match("!{$patternOne}!", $e, $matches, PREG_OFFSET_CAPTURE)){
 			$h = 1;
 			//look up in database and find position of k.xxxxxx
 			
 			
-		}
-
-		if(preg_match($patternTwo, $e)){
-			$i = 1;//count($matchesTwo[0]);
-			
-			//look up in database and find position of xxxxxk.			
-			
-		}
-
-		if(preg_match_all("!{$patternThree}!",$e, $matchesThree)){
-			$j = count($matchesThree[1]);
-		}
-
-		if(preg_match("!{$patternFour}!",$e)){
-			$k = 1;
 		}
 
 		fwrite($newFp, "$a\t$b\t$c\t$d\t$e\t$f\t$g\t$h\t$i\t$j\t$k\n");
