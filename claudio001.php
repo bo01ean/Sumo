@@ -31,11 +31,13 @@ function process($in,$out)
 	$fp = fopen($in, "rw");
 	$newFp = fopen($out, "w");
 
-	$patternOne = "^K\.";
-	///false cases
+	//TRUE CASE
+	$patternOne = "(^K\.|K\.$)";
+	///false cases	
 	$patternTwo = "(\..+(K[^\[]).+\.)";
 	//true case COUNT THESE
 	$patternThree = "(K\[170\.11\])";
+	//
 	$patternFour = "K\[170\.11\]\.";
 
 

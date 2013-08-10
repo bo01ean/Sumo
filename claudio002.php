@@ -1,6 +1,5 @@
 <?php
 
-
 parsefileIntoMemory();
 
 
@@ -31,7 +30,7 @@ function process($in,$out)
 	$fp = fopen($in, "rw");
 	$newFp = fopen($out, "w");
 
-	$patternOne = "^K\.";
+	$patternOne = "(^K\.|K\.$|K[^\.])";
 	///false cases
 	$patternTwo = "(\..+(K[^\[]).+\.)";
 	//true case COUNT THESE
