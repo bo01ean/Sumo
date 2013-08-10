@@ -65,9 +65,7 @@ class claudio {
 	
 			if(preg_match_all("!{$patternOne}!", $e, $matches)){
 				
-				
-				print_r($matches);
-
+				//print "{$e}\n" . print_r($matches , true) . "\n";
 				
 				$matchPatternOne = 1;
 				$lookup = array();
@@ -86,8 +84,9 @@ class claudio {
 			}
 			
 			if ($matchPatternOne) {
+				
 				$data[] = $matchPatternOne;
-				$data[] = $position;
+				$data[] = join(",", $position);
 				
 				$writeOut = join("\t", $data) . "\n";
 				
@@ -105,10 +104,32 @@ class claudio {
 			$found = array();
 			if (preg_match("!($e)!im", $this->dataStore[$key], $found, PREG_OFFSET_CAPTURE)) {
 				//print "bammmm\n";
-				//print_r($found);
-				return $found[1][1];
+			//	print "{$this->dataStore[$key]}\n";
+				
+				// get k positions in search
+				$positions = array();
+				
+				$tmp = array();				
+				$tmp[] = $found[1][1];
+				
+				if(preg_match_all("!([k])!i", $e, $positions, PREG_OFFSET_CAPTURE)) {
+					foreach($positions[1] as $k => $pos) {
+						if($k == 0 || $k == count($positions[1][$k]) ){
+							$tmp[] = ($pos[1] + $found[1][1]);
+						}
+					}	
+				}				
+				return $tmp;
 			}
 	}
+
+
+
+
+
+
+
+
 
 
 
